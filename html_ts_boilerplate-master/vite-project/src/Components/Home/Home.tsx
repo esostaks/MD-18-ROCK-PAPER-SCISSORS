@@ -1,12 +1,16 @@
 import style from '../Home/Home.module.scss'
+import { useTranslation } from 'react-i18next'
 
 const Home = () => {
+
+    const {t} = useTranslation()
+
     return (
         <div className={style.container}>
-            <h1 className={style.header}>Welcome to the ROCK-PAPER-SCISSORS Madness!</h1>
-            <p>
-               Welcome to the oldschool classics
-            </p>
+            <p>{t('welcome')}</p>
+            <span>{t('firstRule')}</span>
+            <span>{t('secondRule')}</span>
+            <span>{t('thirdRule')}</span>
         </div>
       
     );

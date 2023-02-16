@@ -1,11 +1,13 @@
 import style from '../Play/Play.module.scss'
 import React, { useState, useRef } from 'react'
-
-
+import axios from 'axios'
+import { useTranslation } from 'react-i18next'
 
 
 
 const Play = () => {
+
+    const {t} = useTranslation()
 
     type Elements = {
         'paper': string,
@@ -23,6 +25,7 @@ const Play = () => {
     
     const [playerChoice, setPlayerChoice] = useState('')
     const [compChoice, setcompChoice] = useState('')
+    const [result, setResult] = useState('')
 
     const imgRef = useRef<HTMLImageElement | null>(null)
     const resultRef = useRef<HTMLSpanElement | null>(null)
@@ -31,9 +34,14 @@ const Play = () => {
     const scissorsRef = useRef<HTMLImageElement | null>(null)
 
 
-
-
-
+    const collectData = (playerElement: string, computerElement: string, winner: string) => {
+        axios.post('http://localhost:3004/statistics', {
+            player: playerElement,
+            computer: computerElement,
+            result: winner     
+        }).then(({ data }) => {});
+    }
+  
 
 
     const selectPaper = (e: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
@@ -105,15 +113,20 @@ const Play = () => {
         let resultMessage = ''
 
         if (playerChoice === compChoice) {
-            resultMessage = 'DRAW'
+            resultMessage = `${t('draw')} `
+            setResult('draw')
         } else if (playerChoice === 'paper' && compChoice === 'rock') {
-            resultMessage = 'YOU WIN!'
+            resultMessage = `${t('win')} `
+            setResult('user won')
         } else if (playerChoice === 'rock' && compChoice === 'scissors') {
-            resultMessage = 'YOU WIN!'
+            resultMessage = `${t('win')} `
+            setResult('user won')
         } else if (playerChoice === 'scissors' && compChoice === 'paper') {
-            resultMessage = 'YOU WIN!'
+            resultMessage = `${t('win')} `
+            setResult('user won')
         } else {
-            resultMessage = 'YOU LOSE!'
+            resultMessage = `${t('loss')} `
+            setResult('PC won')
         }
 
         if (imgRef.current) {
@@ -124,8 +137,10 @@ const Play = () => {
             resultRef.current.innerHTML = resultMessage
         }
 
-
         
+        console.log(`player: ${playerChoice}, PC:  ${compChoice}, result: ${result} `)
+
+        collectData(playerChoice, compChoice, result)        
     }
 
 
@@ -140,7 +155,7 @@ const Play = () => {
                 <img ref={rockRef} src="./src/assets/images/rock.jpg" className='zoom' alt="Fist" width='270' height='290' onClick={selectRock}/>
                 <img ref={scissorsRef} src="./src/assets/images/scissors.jpg" className='zoom' alt="Fingers as scissors" width='270' height='290' onClick={selectScissors}/>
             </div>
-            <button onClick={decideWinner}>LET'S ROLL</button>
+            <button onClick={decideWinner}>{t('startBtn')}</button>
         </div>
         
       

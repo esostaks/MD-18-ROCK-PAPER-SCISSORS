@@ -2,9 +2,19 @@ import style from '../Statistics/Statistics.module.scss'
 
 
 const Statistics = () => {
+
+
+
+
+
     return (
-        <div>
-            <h1>Some statistics</h1>
+        <div className={style.container}>
+            <div className={style.header}>
+                <span>COMPUTER'S CHOICE</span>
+                <span>PLAYER'S CHOICE</span>
+                <span>RESULT</span>
+            </div>
+            <div className={style.header}></div>
         </div>
       
     );
