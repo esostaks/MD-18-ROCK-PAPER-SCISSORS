@@ -1,6 +1,6 @@
 import Play from './Components/Play/Play'
 import Home from '../src/Components/Home/Home'
-import Statistics from '../src/Components/Statistics/Statistics'
+import { Statistics } from '../src/Components/Statistics/Statistics'
 import {
   BrowserRouter as Router,
   Routes,
@@ -12,7 +12,7 @@ import i18n from 'i18next'
 import { useTranslation } from 'react-i18next'
 import { translationsEn, translationsLv, translationsRu } from '../public/localise/languages'
 import { initReactI18next} from 'react-i18next'
-
+import 'bootstrap/dist/css/bootstrap.css'
 
 // import './App.css'
 
@@ -48,7 +48,7 @@ function App() {
     <QueryClientProvider client={client}>
       <Router>
         <div className='navigation'>
-          <div className='navigation'>
+          <div className='nav'>
             <div  className='link'><Link to="/">{t('home')}</Link></div>
             <div  className='link'><Link to="/game">{t('play')}</Link></div>
             <div  className='link'><Link to="/statistics">{t('statistics')}</Link></div>

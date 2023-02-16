@@ -24,7 +24,7 @@ const Play = () => {
 
     
     const [playerChoice, setPlayerChoice] = useState('')
-    const [compChoice, setcompChoice] = useState('')
+    const [compChoice, setcompChoice] = useState('rock')
     const [result, setResult] = useState('')
 
     const imgRef = useRef<HTMLImageElement | null>(null)
@@ -145,17 +145,17 @@ const Play = () => {
 
 
     return (
-        <div>
-            <div>
+        <div className={style.wrapper}>
+            <div className={style.result}>
                 <img ref={imgRef} className='img_hidden' width='297' height='319'/>
-                <span ref={resultRef}></span>
+                <span ref={resultRef} className={style.winMessage}></span>
             </div>
-            <div className={style.wrapper}>
+            <div className={style.elements}>
                 <img ref={paperRef} src="./src/assets/images/paper.jpg" className='zoom' alt="Open palm" width='270' height='290' onClick={selectPaper}/>
                 <img ref={rockRef} src="./src/assets/images/rock.jpg" className='zoom' alt="Fist" width='270' height='290' onClick={selectRock}/>
                 <img ref={scissorsRef} src="./src/assets/images/scissors.jpg" className='zoom' alt="Fingers as scissors" width='270' height='290' onClick={selectScissors}/>
             </div>
-            <button onClick={decideWinner}>{t('startBtn')}</button>
+            <button  type="button" className="btn btn-lg btn-success" onClick={decideWinner}>{t('startBtn')}</button>
         </div>
         
       

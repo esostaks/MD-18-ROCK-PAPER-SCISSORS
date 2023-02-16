@@ -30,16 +30,16 @@ pool.connect(function(err) {
   console.log("Connected!");
 });
 
-// app.get('/posts', (req: Request, res: Response) => {
-//   pool.connect(function (err) {
-//       if (err) throw err;
-//       pool.query('SELECT * FROM blog', function (err, result, fields) {
-//           if (err) throw err;
-//           res.send(result);
-//           console.log(result);
-//           });
-//   });
-// });
+app.get('/statistics', (req: Request, res: Response) => {
+  pool.connect(function (err) {
+      if (err) throw err;
+      pool.query('SELECT * FROM matchHistory', function (err, result, fields) {
+          if (err) throw err;
+          res.send(result);
+          console.log(result);
+          });
+  });
+});
 
 
 app.post('/statistics', (req: Request, res: Response) => {
@@ -50,26 +50,3 @@ app.post('/statistics', (req: Request, res: Response) => {
   pool.query(sqlInsert, [computer, player, winner], (err, result) => {
   })
 })
-
-// app.get('/posts/:id', (req: Request, res: Response) => {
-//   const id = req.params.id
-//   const sqlInsert = "SELECT * FROM blog WHERE id = ?;"
-//   pool.query(sqlInsert, id, (err, result) => {
-//     if (err) throw err;
-//     res.send(result[0]);
-//     console.log(result);
-//   })
-// })
-
-// app.put('/posts/:id', (req: Request, res: Response) => {
-//   const id = req.params.id
-//   const title = req.body.title
-//   const content = req.body.content
-//   const image = req.body.image
-//   const sqlInsert = 'UPDATE blog SET title = ?, content = ?, image = ? WHERE id = ?;'
-//   pool.query(sqlInsert, [title, content, image, id], (err, result) => {
-//     if (err) throw err;
-//     res.send(result);
-//     console.log(result);
-//   })
-// })

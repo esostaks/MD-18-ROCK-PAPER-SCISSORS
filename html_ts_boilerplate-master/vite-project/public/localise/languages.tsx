@@ -9,7 +9,11 @@ export const translationsEn = {
     startBtn: "LET'S GO!",
     draw: "DRAW!",
     win: "YOU WON!",
-    loss: "YOU LOST!"
+    loss: "YOU LOST!",
+    history: 'MATCH HISTORY',
+    pcChoice: "COMPUTER'S CHOICE",
+    userChoice: "PLAYER'S CHOICE",
+    result: "RESULT",
 }
   
 export const translationsLv = {
@@ -23,7 +27,11 @@ export const translationsLv = {
     startBtn: "AIZIET!",
     draw: "NEIZŠĶIRTS!",
     win: "UZVARA!",
-    loss: "ZAUDĒJUMS!"
+    loss: "ZAUDĒJUMS!",
+    history: 'SPĒĻU VĒSTURE',
+    pcChoice: "DATORA IZVĒLE",
+    userChoice: "SPĒLĒTĀJA IZVĒLE",
+    result: "REZULTĀTS",
   
 }
   
@@ -38,7 +46,11 @@ export const translationsRu = {
     startBtn: "ВПЕРЕД!",
     draw: "НИЧЬЯ!",
     win: "ПОБЕДА!",
-    loss: "ПОРАЖЕНИЕ!"
+    loss: "ПОРАЖЕНИЕ!",
+    history: 'ИСТОРИЯ ИГР',
+    pcChoice: "ВЫБОР КОМПЮТЕРА",
+    userChoice: "ВЫБОР ИГРОКА",
+    result: "РЕЗУЛЬТАТ",
   
 }
   
